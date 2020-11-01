@@ -2,9 +2,11 @@ version: '3'
 
 services:
   app:
-    image: node:lts # バージョン指定も可能 ex. node:12.16.1
-    container_name: nodejs-sample
+    build: .
+    ports:
+      - 3001:3000
+    container_name: nodecli
     tty: true
+    stdin_open: true
     volumes:
-      - ./src:/src
-    working_dir: "/src"
+      - .:/nodecli
